@@ -248,5 +248,3 @@ document.addEventListener('DOMContentLoaded', function() {
     
 });
 
-// add music
-// add sound effects
