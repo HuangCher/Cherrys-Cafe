@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cherry's Cafe</title>
+        <link rel="icon" type="image/png" href="assets/coffee icon.png" />
+        <style>
+            /* background website */
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: #ffe0e0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                position: relative;
+            }
+            /* menu */
+            .menu {
+                position: absolute;
+                background-color: #ab8c6f; 
+                top: 210px; 
+                left: 75px; 
+                width: 310px; 
+                font-size: 30px;
+                font-family: cursive;
+                text-align: left;
+                padding: 20px;
+                border-radius: 10px;
+            }
+            .menuHeader {
+                text-align: center;
+                margin-bottom: 10px;
+                font-size: 30px;
+                font-family: cursive;
+                color: black;
+            }
+            ul.menuItems {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                font-size: 20px;
+                font-family: cursive;
+            }
+            ul.menuItems li {
+                margin-bottom: 10px;
+            }
+            /* barista's guide */
+            .guide {
+                position: absolute;
+                background-color: #ab8c6f; 
+                top: 80px; 
+                right: 75px; 
+                width: 310px; 
+                font-size: 30px;
+                font-family: cursive;
+                text-align: left;
+                padding: 20px;
+                border-radius: 10px;
+            }
+            .guideHeader {
+                text-align: center;
+                margin-bottom: 10px;
+                font-size: 30px;
+                font-family: cursive;
+                color: black;
+            }
+            .subHeader {
+                font-size: 18px;
+                font-family: cursive;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+            ul.guideItems {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                font-size: 20px;
+                font-family: cursive;
+            }
+            ul.guideItems li {
+                margin-bottom: 10px;
+            }
+            #iceGuide {
+                width: 15%;
+                height: 15%;
+                background-size: contain;
+                background-repeat: no-repeat;      
+            }
+            #espressoGuide {
+                width: 25%;
+                height: 25%;
+                background-size: contain;
+                background-repeat: no-repeat;                
+            }
+            #cocoaGuide {
+                width: 15%;
+                height: 15%;
+                background-size: contain;
+                background-repeat: no-repeat;                
+            }
+            #vanillaGuide {
+                width: 15%;
+                height: 15%;
+                background-size: contain;
+                background-repeat: no-repeat;                
+            }
+            #milkGuide {
+                width: 15%;
+                height: 15%;
+                background-size: contain;
+                background-repeat: no-repeat;                
+            }
+            #waterGuide {
+                width: 25%;
+                height: 25%;
+                background-size: contain;
+                background-repeat: no-repeat;                
+            }
+
+            /* game screens */
+            #game {
+                width: 900px; 
+                height: 600px; 
+                background-color: black;
+                background-size: cover; 
+                background-position: center; 
+                position: absolute; 
+                border: 5px solid #000000;
+            }
+            .screen {
+                width: 100%;
+                height: 100%;
+                background-size: cover;
+                background-position: center;
+            }
+            #orderScreen {
+                background-image: url('assets/bg.png'); 
+                display: block;
+            }
+            #kitchenScreen {
+                background-image: url('assets/kitchen bg.png');
+            }
+
+            /* buttons */
+            #orderScreenBtn {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                padding: 10px 20px;
+                font-size: 15px;
+                font-family: cursive;
+                background-color: #ffe0e0;
+                border: 3px solid #6d5239;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            #kitchenScreenBtn {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                padding: 10px 20px;
+                font-size: 15px;
+                font-family: cursive;
+                background-color: #ffe0e0;
+                border: 3px solid #6d5239;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            #clearBtn {
+                position: absolute;
+                top: 10px;
+                right: 120px;
+                padding: 10px 20px;
+                font-size: 15px;
+                font-family: cursive;
+                background-color: #ffe0e0;
+                border: 3px solid #6d5239;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            /* order screen */
+            #speech {
+                position: absolute;
+                width: 380px;
+                height: 280px;
+                top: 150px;
+                left: 50px;
+                background-image: url('assets/speech.png'); 
+                background-size: contain;
+                background-repeat: no-repeat;
+                display: flex;
+                align-items: top; 
+                justify-content: center; 
+            }
+            #dialogueText {
+                text-align: center;
+                font-size: 20px;
+                font-family: cursive;
+                overflow-wrap: break-word; 
+                padding: 5px 25px; 
+            }
+            #customer {
+                position: absolute;
+                width: 850px;
+                height: 600px;
+                right: 20px;
+            }
+            #counter {
+                position: absolute;
+                width: 900px;
+                height: 600px;
+            }
+            #reputation {
+                position: absolute;
+                bottom: 10px;
+                right: 10px;
+            }
+            .repIcon {
+                width: 50px;
+                height: 50px;
+                margin-right: 10px;
+            }
+            #bank {
+                position: absolute;  
+                top: 10px; 
+                left: 60px; 
+                transform: translateX(-50%); 
+                padding: 10px 20px;
+                background-color: #ffe0e0; 
+                border: 3px solid #6d5239; 
+                border-radius: 5px; 
+                font-size: 18px; 
+                font-family: cursive;
+                color: #000; 
+                text-align: center;
+            }
+
+            /* kitchen screen */
+            #inventoryBar {
+                display: flex;
+                justify-content: space-around;
+                position: absolute;
+                bottom: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 50%;
+            }
+            .inventorySlot {
+                width: 60px;
+                height: 60px;
+                background-color: #ffe0e0;
+                border: 3px solid #6d5239;
+                border-radius: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+            #ice {
+                position: absolute;
+                width: 170px;
+                height: 370px;
+                bottom: 55px;
+                right: 60px;
+                cursor: pointer;
+            }
+            #espresso {
+                position: absolute;
+                width: 190px;
+                height: 130px;
+                bottom: 236px;
+                right: 355px;
+                cursor: pointer;
+            }
+            #cocoa {
+                position: absolute;
+                width: 70px;
+                height: 95px;
+                bottom: 236px;
+                right: 645px;
+                cursor: pointer;
+            }
+            #vanilla {
+                position: absolute;
+                width: 70px;
+                height: 95px;
+                bottom: 236px;
+                right: 560px;
+                cursor: pointer;
+            }
+            #milk {
+                position: absolute;
+                width: 80px;
+                height: 140px;
+                bottom: 236px;
+                right: 730px;
+                cursor: pointer;
+            }
+            #water {
+                position: absolute;
+                width: 85px;
+                height: 85px;
+                bottom: 236px;
+                right: 260px;
+                cursor: pointer;
+            }
+
+        </style>
+    </head>
+    <body>
+        <!-- menu -->
+        <div class="menu">
+            <div class="menuHeader"><b>MENU</b></div>
+            <ul class="menuItems">
+                <li><b>Cappuccino ($4.49):</b> Espresso, Milk</li>
+                <li><b>Vanilla Latte ($6.49):</b> Espresso, Milk, Vanilla</li>
+                <li><b>Chocolate Cold Brew ($6.99):</b> Espresso, Milk, Cocoa, Vanilla, Ice</li>
+                <li><b>Americano ($3.99):</b> Espresso, Hot Water</li>
+                <li><b>Mocha ($5.99):</b> Espresso, Milk, Cocoa</li>
+            </ul>
+        </div>
+
+        <!-- barista's guide -->
+        <div class="guide">
+            <div class="guideHeader"><b>Barista's Guide</b></div>
+            <div class="subHeader">Hi, new baristas! Make sure you get orders correct for tips. If you don't Cherry's Cafe will lose customers!</div>
+            <ul class="guideItems">
+                <li><b>Ice:</b><img src="assets/ice.png" id="iceGuide"/></li>
+                <li><b>Espresso:</b><img src="assets/espresso.png" id="espressoGuide"/></li>
+                <li><b>Cocoa:</b><img src="assets/cocoa.png" id="cocoaGuide"/></li>
+                <li><b>Vanilla:</b><img src="assets/vanilla.png" id="vanillaGuide"/></li>
+                <li><b>Milk:</b><img src="assets/milk.png" id="milkGuide"/></li>
+                <li><b>Hot Water:</b><img src="assets/water.png" id="waterGuide"/></li>
+                
+            </ul>
+        </div>
+
+        <div id="game">
+            <!-- order screen -->
+            <div id="orderScreen" class = "screen" style="display:none;">
+                <img src="assets/counter.png" alt = "front desk" id="counter"/>
+                <img src=" " alt="customer" id="customer"/>
+                <div id="bank">$0.00</div>
+                <div id="speech">
+                    <p id="dialogueText">text</p>
+                </div>
+                <div id="reputation">
+                    <img src="assets/rep.png" class="repIcon">
+                    <img src="assets/rep.png" class="repIcon">
+                    <img src="assets/rep.png" class="repIcon">
+                </div>
+                <button id="kitchenScreenBtn">Kitchen</button>
+            </div>
+
+            <!-- kitchen screen -->
+            <div id="kitchenScreen" class="screen" style="display:none;">
+                <img src="assets/ice.png" alt="ingredients: ice" id="ice"/>
+                <img src="assets/cocoa.png" alt="ingredients: cocoa" id="cocoa"/>
+                <img src="assets/espresso.png" alt="ingredients: espresso" id="espresso"/>
+                <img src="assets/milk.png" alt="ingredients: milk" id="milk"/>
+                <img src="assets/vanilla.png" alt="ingredients: vanilla" id="vanilla"/>
+                <img src="assets/water.png" alt="ingredients: hot water" id="water"/>
+                <button id="orderScreenBtn">Finish!</button>
+                <button id="clearBtn">Clear Inventory</button>
+                <div id="inventoryBar">
+                    <div class="inventorySlot" id="slot1"></div>
+                    <div class="inventorySlot" id="slot2"></div>
+                    <div class="inventorySlot" id="slot3"></div>
+                    <div class="inventorySlot" id="slot4"></div>
+                    <div class="inventorySlot" id="slot5"></div>
+                    <div class="inventorySlot" id="slot6"></div>
+
+                </div>
+            </div>
+            
+        </div>
+        <script src="main.js"></script>
+    </body>
+</html>
